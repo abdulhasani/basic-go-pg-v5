@@ -25,3 +25,10 @@ func GetUserById(db *pg.DB, id int) (User, error) {
 	_, err := db.Query(&user, `SELECT * FROM users WHERE id = ? `, id)
 	return user, err
 }
+
+func GetUserByFirst_Name(db *pg.DB, first_name string) ([]User, error) {
+	first_name = "%" + first_name + "%"
+	user := []User{}
+	_, err := db.Query(&user, `SELECT * FROM users WHERE first_name LIKE ? `, first_name)
+	return user, err
+}
