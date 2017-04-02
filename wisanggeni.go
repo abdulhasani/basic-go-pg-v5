@@ -41,5 +41,5 @@ func testConnection() {
 }
 
 func main() {
-	testConnection()
+
 }
