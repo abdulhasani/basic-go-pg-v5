@@ -7,3 +7,8 @@ type User struct {
 	Last_name  string
 	Email      string
 }
+
+type Address struct {
+	Id   int
+	Coba User
+}
