@@ -67,7 +67,16 @@ func callFunctionGetById(id int) {
 	fmt.Println(user.First_name)
 }
 
+func callFunctionGetByFirstName(first_name string) {
+	users, err := lib_ex.GetUserByFirst_Name(initDB(), first_name)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Printf("%+v", users)
+}
+
 func main() {
 	//callFucntionGetUsers()
 	//callFunctionGetById(1)
+	//callFunctionGetByFirstName("a")
 }
