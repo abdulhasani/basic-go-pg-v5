@@ -142,10 +142,10 @@ func main() {
 	//callFunctionGetById(1)
 	//callFunctionGetByFirstName("a")
 	//exInsertUser()
-	users := []lib_ex.User{
-		{Id: 14, Age: 24, Email: "percoban1@gmail.com", First_name: "Permainan", Last_name: "Oke"},
-		{Id: 5, Age: 25, Email: "percoban2@gmail.com", First_name: "Percobaan", Last_name: "Lagi"},
-	}
+	// users := []lib_ex.User{
+	// 	{Id: 14, Age: 24, Email: "percoban1@gmail.com", First_name: "Permainan", Last_name: "Oke"},
+	// 	{Id: 5, Age: 25, Email: "percoban2@gmail.com", First_name: "Percobaan", Last_name: "Lagi"},
+	// }
 
-	exInsertUserWithSlice(users)
+	// exInsertUserWithSlice(users)
 }
