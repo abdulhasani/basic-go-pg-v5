@@ -58,8 +58,9 @@ func callFucntionGetUsers() {
 }
 
 /**
- */
-func callFunctionGetById(id int) {
+fungsi ini berisi fungsi pemanggilan GetUserById dengan return data user dan error
+*/
+func callFunctionGetByID(id int) {
 	user, err := lib_ex.GetUserById(initDB(), id)
 	if err != nil {
 		panic(err)
@@ -80,22 +81,22 @@ fungsi ini berisi contoh insert data ke table users
 */
 func exInsertUser() {
 	user1 := lib_ex.User{
-		Id:         9,
-		Age:        25,
-		Email:      "yohaahehe@com",
-		First_name: "kabur",
-		Last_name:  "oke cinta",
+		Id:         2,
+		Age:        24,
+		Email:      "cinta@yahoo.co.id",
+		First_name: "Joker",
+		Last_name:  "Hasani",
 	}
 	err := initDB().Insert(&user1)
 	if err != nil {
 		panic(err)
 	}
-	callFunctionGetById(user1.Id)
+	callFunctionGetByID(user1.Id)
 }
 
 /**
-fungsi ini berisi contoh membikin struct kedalam bentuk table database
-dalam hal ini menggunakan postgresql
+fungsi ini berisi contoh membuat struct kedalam bentuk table database
+dalam hal ini menggunakan postgreSQL
 */
 func exCreateTable() {
 	err := initDB().CreateTable(&lib_ex.Address{}, &orm.CreateTableOptions{
@@ -107,7 +108,7 @@ func exCreateTable() {
 }
 
 /**
-bisa digunakan untuk mendapatkan informasi getInfoTable
+bisa digunakan untuk mendapatkan informasi sebuah tabel
 */
 func getInfoTable() {
 	var info []struct {
@@ -126,8 +127,9 @@ func getInfoTable() {
 }
 
 func main() {
+	//testConnection()
 	//callFucntionGetUsers()
 	//callFunctionGetById(1)
 	//callFunctionGetByFirstName("a")
-
+	//exInsertUser()
 }
