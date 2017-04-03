@@ -94,6 +94,16 @@ func exInsertUser() {
 	callFunctionGetByID(user1.Id)
 }
 
+func exInsertUserWithSlice(users []lib_ex.User) {
+	err := initDB().Insert(&users)
+	if err != nil {
+		panic(err)
+	}
+	for i := 0; i < len(users); i++ {
+		callFunctionGetByID(users[i].Id)
+	}
+}
+
 /**
 fungsi ini berisi contoh membuat struct kedalam bentuk table database
 dalam hal ini menggunakan postgreSQL
@@ -132,4 +142,10 @@ func main() {
 	//callFunctionGetById(1)
 	//callFunctionGetByFirstName("a")
 	//exInsertUser()
+	users := []lib_ex.User{
+		{Id: 14, Age: 24, Email: "percoban1@gmail.com", First_name: "Permainan", Last_name: "Oke"},
+		{Id: 5, Age: 25, Email: "percoban2@gmail.com", First_name: "Percobaan", Last_name: "Lagi"},
+	}
+
+	exInsertUserWithSlice(users)
 }
