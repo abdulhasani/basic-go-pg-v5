@@ -117,6 +117,25 @@ func exCreateTable() {
 	}
 }
 
+func exRunTransaction() {
+	var counter int
+	//transaction is automatically rollbacked on error
+	err := initDB().RunInTransaction(func(tx *pg.Tx) error {
+		_, err := tx.QueryOne(pg.Scan(&counter), `SELECT age FROM users WHERE id=1`)
+		if err != nil {
+			return err
+		}
+		counter++
+
+		_, err = tx.Exec(`UPDATE users SET age = ? WHERE id=1`, counter)
+		return err
+	})
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println(counter)
+}
+
 /**
 bisa digunakan untuk mendapatkan informasi sebuah tabel
 */
@@ -146,6 +165,9 @@ func main() {
 	// 	{Id: 14, Age: 24, Email: "percoban1@gmail.com", First_name: "Permainan", Last_name: "Oke"},
 	// 	{Id: 5, Age: 25, Email: "percoban2@gmail.com", First_name: "Percobaan", Last_name: "Lagi"},
 	// }
-
+	//exCreateTable()
 	// exInsertUserWithSlice(users)
+	//exRunTransaction()
+	lib_ex.ExApplyFunc(initDB())
+	//lib_ex.ExampleSomeOneColumn(initDB())
 }

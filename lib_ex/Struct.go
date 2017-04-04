@@ -10,5 +10,5 @@ type User struct {
 
 type Address struct {
 	Id   int
-	Coba User
+	Coba *User
 }
